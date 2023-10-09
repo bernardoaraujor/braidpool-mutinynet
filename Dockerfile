@@ -23,4 +23,4 @@ COPY --from=builder "/tmp/.bitcoin" $BITCOIN_DIR
 
 VOLUME $BITCOIN_DIR
 EXPOSE 28332 28333 28334 38332 38333 38334
-ENTRYPOINT ["bitcoind", "-rpcbind=::", "-rpcbind=0.0.0.0", "-fallbackfee=0.00008", "-signet=1", "-txindex", "-signetchallenge=512102f7561d208dd9ae99bf497273e16f389bdbd6c4742ddb8e6b216e64fa2928ad8f51ae", "-dnsseed=0", "-signetblocktime=30", "-rpcallowip=0.0.0.0/0", "-rpcuser=braidpooldev", "-rpcpassword=braidpooldev" ]
+ENTRYPOINT ["bitcoind", "-rpcbind=::", "-rpcbind=0.0.0.0", "-fallbackfee=0.00008", "-signet=1", "-txindex", "-signetchallenge=512102f7561d208dd9ae99bf497273e16f389bdbd6c4742ddb8e6b216e64fa2928ad8f51ae", "-dnsseed=0", "-signetblocktime=30", "-rpcallowip=0.0.0.0/0", "-rpcuser=braidpooldev", "-rpcpassword=braidpooldev", "-zmqpubhashblock=tcp://[::]:28332" ]
