@@ -6,4 +6,4 @@ The `Dockerfile` is heavily inspired by [this](https://github.com/fedimint/fedim
 
 In order to avoid consuming Fedimint's resources (AWS bandwidth etc), I replaced the snapshot URL `https://fedi-public-snapshots.s3.amazonaws.com/bitcoind-mutinynet-signet.tar` for `https://pin.ski/3Q6PXte`, which is the exact same file (md5sum `da82b5c516a26ec6a349a923f8e3905b`) but hosted on IPFS via my personal (free) [Pinata](https://pinata.cloud) account.
 
-Currently, only `x86-64` hosts are supported.
+Currently, only `x86_64_linux_gnu`, `aarch64_linux_gnu`, and `arm64_apple_darwin` hosts are supported.

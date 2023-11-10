@@ -1,11 +1,31 @@
 #!/bin/sh
 
+# Set the Dockerfile according to host architecture
+case "$(uname -s)" in
+    Linux*)
+        MACHINE=Linux
+        case "$(uname -m)" in
+            x86_64) DOCKERFILE_HOST_ARCH="Dockerfile_x86_64_linux_gnu";;
+            aarch64) DOCKERFILE_HOST_ARCH="Dockerfile_aarch64_linux_gnu";;
+            *) exit 1
+        esac
+        ;;
+    Darwin*)
+        MACHINE=Mac
+        case "$(uname -m)" in
+            arm64) DOCKERFILE_HOST_ARCH="Dockerfile_arm64_apple_darwin";;
+            *) exit 1
+        esac
+        ;;
+    *) exit 1
+esac
+
 # Set the image name and tag
 IMAGE_NAME="custom-signet-bitcoin"
 IMAGE_TAG="latest"
 
 # Build the Docker image
-docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+docker build -t "${IMAGE_NAME}:${IMAGE_TAG}" . -f "${DOCKERFILE_HOST_ARCH}"
 
 # Check if the build was successful
 if [ $? -ne 0 ]; then
