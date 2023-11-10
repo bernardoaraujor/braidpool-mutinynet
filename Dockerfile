@@ -13,7 +13,7 @@ RUN BITCOIN_URL="https://github.com/benthecarman/bitcoin/releases/download/custo
     wget -qO "${BITCOIN_FILE}" "${BITCOIN_URL}" && \
     mkdir -p bin && \
     tar -xzvf "${BITCOIN_FILE}" -C /tmp/bin --strip-components=2 "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-cli" "bitcoin-${BITCOIN_VERSION}/bin/bitcoind" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-wallet" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-util"
-RUN mkdir -p /tmp/.bitcoin/signet && wget https://pin.ski/3Q6PXte -O - | tar -C /tmp/.bitcoin/signet -xvf -
+RUN mkdir -p /tmp/.bitcoin/signet && wget https://orange-obvious-gazelle-167.mypinata.cloud/ipfs/QmP75Tji41p3QptJga5EUDxdywASm1RHKBQW4Qpj1PUKyK -O - | tar -C /tmp/.bitcoin/signet -xvf -
 
 FROM debian:buster-slim as custom-signet-bitcoin
 
